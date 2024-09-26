@@ -1,2 +1,4 @@
-from .base import *
-ALLOWED_HOSTS = ['*']
+from .base import *  # noqa
+
+
+ALLOWED_HOSTS = ["*"]
