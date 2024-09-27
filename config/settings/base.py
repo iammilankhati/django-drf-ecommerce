@@ -17,9 +17,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-
+APPS_DIR = BASE_DIR / "ecommerce"
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 
@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     # External Packages
     "rest_framework",
     # Internal Packages
+    "ecommerce.core",
+    "ecommerce.product",
 ]
 
 MIDDLEWARE = [
@@ -114,7 +116,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "static/"  # By default static files are placed here
+# STATICFILES_DIRS = [
+#     BASE_DIR / "static",
+#     APPS_DIR / "static",
+#     #  shared static files on multiple locations
+# ]
+
+# STATIC_ROOT = BASE_DIR / "staticfiles"
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
