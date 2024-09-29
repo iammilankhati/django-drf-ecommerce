@@ -9,4 +9,7 @@ tests
 .vscode
 
 **.sqlite3
+*.pyc
+schema.yml
 
+setup.cfg
