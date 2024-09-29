@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # External Packages
     "rest_framework",
-    # Internal Packages
+    "drf_spectacular",
+    # Internal Apps
     "ecommerce.core",
     "ecommerce.product",
 ]
@@ -113,10 +114,18 @@ USE_I18N = True
 USE_TZ = True
 
 
+ROOT_URLCONF = "config.urls"
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
+STATIC_ROOT = str(BASE_DIR / "staticfiles")
+
+STATICFILES_DIRS = [str(APPS_DIR / "static")]
 STATIC_URL = "static/"  # By default static files are placed here
+
+MEDIA_ROOT = str(BASE_DIR / "media")
+MEDIA_URL = "/media/"
 # STATICFILES_DIRS = [
 #     BASE_DIR / "static",
 #     APPS_DIR / "static",
@@ -132,4 +141,6 @@ STATIC_URL = "static/"  # By default static files are placed here
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-REST_FRAMEWORK = {}
+REST_FRAMEWORK = {"DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema"}
+
+SPECTACULAR_SETTINGS = {"TITLE": "Django DRF Ecommerce"}
